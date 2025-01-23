@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f7f7; /* Updated background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333333;
+            font-size: 24px;
+        }
+
+        #filetag {
+            margin-bottom: 20px;
+        }
+
+        #preview {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+
+        #checkButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #checkButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Upload Preview</h1>
+        <!-- Change the form to include method="POST" and enctype="multipart/form-data" -->
+        <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+            <!-- Add a name attribute to the input element -->
+            <input type="file" id="filetag" name="file">
+            <img src="" id="preview">
+            <!-- Change the button type to submit -->
+            <button id="checkButton" type="submit">Check Image</button>
+        </form>
+    </div>
+
+    <script>
+        var fileTag = document.getElementById("filetag");
+        var preview = document.getElementById("preview");
+
+        fileTag.addEventListener("change", function() {
+            changeImage(this);
+        });
+
+        function changeImage(input) {
+            var reader;
+
+            if (input.files && input.files[0]) {
+                reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.setAttribute('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
