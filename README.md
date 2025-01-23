@@ -135,18 +135,3 @@ Detailed classification reports for test data are displayed.
 
 ---
 
-Folder Structure
-
-AI-Real-Image-Classifier/
-├── train_model.py           # Script to preprocess data and train the model
-├── evaluate_model.py        # Script to evaluate the model's performance
-├── predict_image.py         # Script to classify a new image
-├── AIGeneratedModel.h5      # Saved trained model
-├── requirements.txt         # Required Python packages
-├── README.md                # Project documentation
-├── dataset_train.zip        # Training dataset (ZIP)
-├── dataset_test.zip         # Testing dataset (ZIP)
-
-
----
-
